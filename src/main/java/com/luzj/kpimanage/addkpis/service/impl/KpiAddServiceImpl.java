@@ -1,6 +1,7 @@
 package com.luzj.kpimanage.addkpis.service.impl;
 
 import com.luzj.kpimanage.addkpis.entity.*;
+import com.luzj.kpimanage.addkpis.log.MyLog;
 import com.luzj.kpimanage.addkpis.repository.AppBaseInfoRepository;
 import com.luzj.kpimanage.addkpis.repository.AppKpiMapRepository;
 import com.luzj.kpimanage.addkpis.repository.UserAppKpiRepository;
@@ -8,8 +9,7 @@ import com.luzj.kpimanage.addkpis.service.KpiAddService;
 import com.luzj.kpimanage.addkpis.vo.KpiDetails;
 import com.luzj.kpimanage.common.ResultValue;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,9 +35,11 @@ public class KpiAddServiceImpl implements KpiAddService {
     public static final int KPI_ID_LENGTH = 6;
     public static final String FORMAT = "###,##0.00";
     public static final int ORD_UP_DOWN_STEP = 100;
-    Logger logger = LoggerFactory.getLogger(this.getClass());
+    Logger logger = Logger.getLogger(KpiAddServiceImpl.class);
+
 
     @Override
+    @MyLog(name = "拦截单指标插入操作")
     @Transactional(value = "transactionManagerCustomer")
     public ResultValue addKpi(KpiDetails params) {
         ResultValue rv = new ResultValue();

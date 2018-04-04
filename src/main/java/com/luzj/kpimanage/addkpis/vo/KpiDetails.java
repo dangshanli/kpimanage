@@ -17,6 +17,21 @@ public class KpiDetails {
     private String floorKpi;//下限指标
     private String parentKpiCode;//父指标的kpiCode,用于确定parent_id
 
+    @Override
+    public String toString() {
+        return super.toString()+"\n"+
+                "kpiName:"+kpiCode+"\n"+
+                "kpiCode:"+kpiCode+"\n"+
+                "appClass:"+appClass+"\n"+
+                "appNameNavigation"+appNameNavigation+"\n"+
+                "appNameSecondary"+appNameSecondary+"\n"+
+                "dateType"+dateType+"\n"+
+                "unit"+unit+"\n"+
+                "ceilingKpi"+ceilingKpi+"\n"+
+                "floorKpi"+floorKpi+"\n"+
+                "parentKpiCode"+parentKpiCode;
+    }
+
     public KpiDetails() {
     }
 

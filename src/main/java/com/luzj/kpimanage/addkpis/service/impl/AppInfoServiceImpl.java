@@ -1,6 +1,7 @@
 package com.luzj.kpimanage.addkpis.service.impl;
 
 import com.luzj.kpimanage.addkpis.entity.AppBaseInfo;
+import com.luzj.kpimanage.addkpis.log.MyLog;
 import com.luzj.kpimanage.addkpis.repository.AppBaseInfoRepository;
 import com.luzj.kpimanage.addkpis.service.AppInfoService;
 import com.luzj.kpimanage.addkpis.vo.AppInfoVo;
@@ -22,6 +23,7 @@ public class AppInfoServiceImpl implements AppInfoService {
     AppBaseInfoRepository baseInfoRepository;
 
     @Override
+    @MyLog()
     public ResultValue findAppInfoByName(String appName) {
         ResultValue rv = new ResultValue();
         List<AppBaseInfo> appInfos = null;
